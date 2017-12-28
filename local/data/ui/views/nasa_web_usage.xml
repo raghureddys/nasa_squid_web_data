@@ -1,0 +1,48 @@
+<dashboard>
+  <label>NASA Web Usage</label>
+  <description>Summary page for our new Splunk Dashboard</description>
+  <row>
+    <panel>
+      <single>
+        <title>Average Hits Per Day</title>
+        <search>
+          <query>index="main" source="NASA_access_log_Jul95" host="MacBook-Pro.fios-router.home" sourcetype="access_common" 
+      | stats count by "MonthDay"
+      | stats avg(count) AS "AvgHitsPerDay" | eval AvgHitsPerDay=round(AvgHitsPerDay,2)</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">248</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <chart>
+        <title>Web Site ReturnCode</title>
+        <search>
+          <query>index="main" source="NASA_access_log_Jul95" host="MacBook-Pro.fios-router.home" sourcetype="access_common" | stats count by ReturnCode</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Top 10 Website Requests.</title>
+        <search>
+          <query>index="main" source="NASA_access_log_Jul95" host="MacBook-Pro.fios-router.home" sourcetype="access_common" | top 10 Request</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

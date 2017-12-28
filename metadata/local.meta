@@ -5,3 +5,15 @@ modtime = 1514437350.255245000
 [app/launcher]
 version = 7.0.1
 modtime = 1514437350.257398000
+
+[views/nasa_web_usage]
+owner = rreddy
+version = 7.0.1
+modtime = 1514443013.336704000
+
+[props/source%3A%3ANASA_access_log_Jul95/EXTRACT-From%2CSquidDateTime%2CRequestType%2CRequest%2CReturnCode%2CReturnSize]
+access = read : [ * ], write : [ admin, power ]
+export = system
+owner = admin
+version = 7.0.1
+modtime = 1514442000.793703000
